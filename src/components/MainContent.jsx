@@ -11,7 +11,7 @@ export const MainContent = () => {
       p='5'
       bg='gray.800'
       shadow='xl'
-      w={['full', '80%']}
+      w={['full', 'full', '80%']}
       mb='10'
       rounded='sm'
     >
