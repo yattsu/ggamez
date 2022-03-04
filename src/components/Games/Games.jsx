@@ -6,6 +6,7 @@ import { GameCard } from '../GameCard/GameCard';
 export const Games = () => {
   const [games, setGames] = useState(null);
   const rawg = new Rawg();
+      console.log(games)
 
   useEffect(() => {
     (async function() {
