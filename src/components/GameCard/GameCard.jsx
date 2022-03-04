@@ -1,3 +1,4 @@
+import { Platforms } from './Platforms';
 import { Flex, Image, Text, Box, Link } from '@chakra-ui/react';
 import { StarIcon } from '@chakra-ui/icons';
 
@@ -50,10 +51,11 @@ export const GameCard = ({ data }) => {
         >
           { data.name }
         </Text>
+        <Platforms platforms={data.platforms} />
         <Text
           position='absolute'
-          top='1'
-          right='2'
+          top='2'
+          right='3'
           fontSize='sm'
           textShadow='0px 0px 5px #000'
           color='gray.200'
