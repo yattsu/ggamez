@@ -6,17 +6,17 @@ export const SkeletonCards = () => {
     <>
     {
       amount.map(i => (
-      <Skeleton
-      minW='3xs'
-      h='56'
+        <Skeleton
+        key={amount.indexOf(i)}
+        minW='3xs'
+        h='56'
         rounded='lg'
         overflow='hidden'
         shadow='lg'
-        flex='15%'
-      />
-
+        flex='20%'
+        />
       ))
-      }
+    }
     </>
   )
 }
