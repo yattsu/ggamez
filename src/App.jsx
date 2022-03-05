@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ChakraProvider, Flex } from '@chakra-ui/react';
 import { Sidebar } from './components/Sidebar/Sidebar';
+import { Home } from './components/Home/Home';
 import { MainContent } from './components/MainContent';
-import { Games } from './components/Games/Games';
 import { Footer } from './components/Footer';
 
 const App = () => {
@@ -30,19 +30,19 @@ const App = () => {
             flex='1'
           >
 
-
             <Routes>
               <Route path='/' element={<MainContent />}>
-                <Route path='/' element={<Games />} />
-                <Route path='/test' element={<Footer />} />
+                <Route path='/' element={<Home />} />
+                <Route path='' element={<Footer />} />
               </Route>
             </Routes>
-
 
           </Flex>
 
         </Flex>
-            <Footer />
+
+        <Footer />
+
       </ChakraProvider>
     </BrowserRouter>
   )
