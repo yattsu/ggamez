@@ -14,7 +14,7 @@ export const Sidebar = () => {
 
   return(
     <Flex
-      position='relative'
+      position='sticky'
       top='0'
       left='0'
       bg='gray.800'
@@ -25,7 +25,6 @@ export const Sidebar = () => {
       pb='5'
     >
       <Flex
-        position={['relative', 'relative', 'sticky']}
         direction='column'
         w='full'
         alignItems='center'

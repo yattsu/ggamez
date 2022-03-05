@@ -1,21 +1,26 @@
 import { useEffect, useState } from 'react';
 import { Rawg } from '../../api';
+import { Flex } from '@chakra-ui/react';
 import { SkeletonCards } from './SkeletonCards';
 import { GameCard } from '../GameCard/GameCard';
 
 export const Games = () => {
   const [games, setGames] = useState(null);
-  const rawg = new Rawg();
       console.log(games)
 
   useEffect(() => {
     (async function() {
-      setGames(await rawg.getGames());
+      const rawg = new Rawg();
+      setGames(await rawg.getGames(10));
     })()
   }, [])
 
   return(
-    <>
+    <Flex
+      direction='row'
+      flexWrap='wrap'
+      gap='5'
+    >
       {
         !games
           ?
@@ -25,6 +30,6 @@ export const Games = () => {
               <GameCard key={game.id} data={game} />
             ))
       }
-    </>
+    </Flex>
   )
 }
