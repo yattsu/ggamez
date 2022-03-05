@@ -31,7 +31,7 @@ export const Platforms = ({ platforms }) => {
     >
     {
       uniquePlatforms.map(platform => (
-        <PlatformIcon platform={platform} />
+        <PlatformIcon key={platform} platform={platform} />
       ))
     }
     </Flex>
