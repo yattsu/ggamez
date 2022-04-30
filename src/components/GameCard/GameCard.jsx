@@ -5,11 +5,11 @@ import { StarIcon } from '@chakra-ui/icons';
 export const GameCard = ({ data }) => {
   return(
     <Link
-      href={`game/${data.slug}`}
+      href={`/game/${data.slug}`}
       direction='column'
       minW='3xs'
       h='56'
-      rounded='lg'
+      rounded='2xl'
       overflow='hidden'
       shadow='lg'
       flex='20%'

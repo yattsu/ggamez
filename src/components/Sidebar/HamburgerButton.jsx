@@ -7,7 +7,7 @@ export const HamburgerButton = ({ menuVisible, handleHamburgerClick }) => {
       p='2'
       cursor='pointer'
       w='full'
-      mt='10'
+      m='3'
     >
       {
         menuVisible

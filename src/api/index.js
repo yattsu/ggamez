@@ -7,14 +7,20 @@ export class Rawg {
     this.default = (endpoint) => { return `https://api.rawg.io/api/${endpoint + (endpoint.includes('?') ? '&' : '?')}key=${this.key}` };
   }
 
-  async getGames(limit, ordering) {
-    const result = await axios.get(this.default(`games?page_size=${limit}&ordering=${ordering}`));
+  async getGames(genres, limit, page, ordering) {
+    const result = await axios.get(this.default(`games?genres=${genres}&page_size=${limit}&page=${page}&ordering=${ordering}`));
 
     return result.data.results;
   }
+  
+  async getGame(slug) {
+    const result = await axios.get(this.default(`games/${slug}`));
+
+    return result.data;
+  }
 
   async getGenres() {
-    const result = await axios.get(this.default('genres?count=1'));
+    const result = await axios.get(this.default('genres'));
 
     return result.data.results;
   }

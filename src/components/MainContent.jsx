@@ -6,10 +6,10 @@ export const MainContent = () => {
     <Flex
       direction='column'
       justify='center'
+      alignItems='center'
       gap='5'
       flexWrap='wrap'
-      p='5'
-      bg='gray.800'
+      bg='transparent'
       zIndex='10'
       w={['full', 'full', 'full']}
     >

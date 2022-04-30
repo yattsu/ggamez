@@ -43,8 +43,9 @@ export const Carousel = ({ games }) => {
       direction='row'
       justify='center'
       h={['48', '2xs', '3xs', '2xs', 'xs', 'xl']}
-      rounded='lg'
+      rounded='2xl'
       overflow='hidden'
+      shadow='xl'
     >
       {
         !currentGame

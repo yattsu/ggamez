@@ -4,22 +4,44 @@ import { Flex } from '@chakra-ui/react';
 import { SkeletonCards } from './SkeletonCards';
 import { GameCard } from '../GameCard/GameCard';
 
-export const Games = () => {
+export const Games = ({ genres, limit, page, ordering, lastPage}) => {
   const [games, setGames] = useState(null);
-      console.log(games)
 
   useEffect(() => {
     (async function() {
-      const rawg = new Rawg();
-      setGames(await rawg.getGames(10));
+      setGames(await getGames(1))
     })()
   }, [])
+
+  useEffect(() => {
+    if(!games) {
+      return
+    }
+    (async function() {
+      await loadMore();
+    })()
+  }, [lastPage])
+
+  const getGames = async (page) => {
+    const rawg = new Rawg();
+    return await rawg.getGames(genres, limit, page, ordering);
+  }
+
+  const loadMore = async () => {
+    const newGames = await getGames(lastPage);
+    setGames([...games, ...newGames])
+  }
 
   return(
     <Flex
       direction='row'
       flexWrap='wrap'
       gap='5'
+      bg='gray.900'
+      p='3'
+      rounded='2xl'
+      shadow='xl'
+      zIndex='10'
     >
       {
         !games

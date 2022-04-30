@@ -1,29 +1,46 @@
+import { useState, useEffect } from 'react';
+import { Rawg } from '../../api';
 import { Flex } from '@chakra-ui/react';
 import { MenuButton } from './MenuButton';
-import { MenuGameButton } from './MenuGameButton';
+import { MenuGenres } from './MenuGenres';
 import { CategoryLabel } from './CategoryLabel';
 
 export const Menu = ({ visible }) => {
+  const [genres, setGenres] = useState(null);
+
+  useEffect(() => {
+    (async function() {
+      const rawg = new Rawg();
+      setGenres(await rawg.getGenres())
+    })()
+  }, [])
+
+  if(!genres) {
+    return 'Loading...'
+  }
+
   return(
     <Flex
-      display={visible ? 'flex' : 'none'}
+      maxH={[visible ? '500' : '0', visible ? '500' : '0', 'full']}
+      overflowY={['scroll', 'scroll', 'visible']}
+      bg={['gray.800', 'gray.800', 'transparent']}
+      shadow={['2xl', '2xl', 'none']}
+      display='flex'
       direction='column'
-      w='full'
+      w={['90%', '90%', 'full']}
+      rounded={['xl', 'xl', 'none']}
       alignItems='center'
-      mt='16'
+      mt={['0', '0', '5']}
       gap='2'
       pl='10%'
       pr='10%'
+      py={[visible ? '5' : '0', visible ? '5' : '0', '0']}
+      transition='.5s'
     >
       <MenuButton label='Home' href='/' />
-      <MenuButton label='About' href='about' />
 
       <CategoryLabel text='Browse' />
-      <MenuGameButton icon='GiBroadsword' label='Action' href='/' />
-      <MenuGameButton icon='GiCrosshair' label='Shooter' href='/' />
-      <MenuGameButton icon='GiEarthAfricaEurope' label='MMO' href='/' />
-
-      <CategoryLabel text='New Releases' />
+      <MenuGenres visible={visible} genres={genres} />
     </Flex>
   )
 }

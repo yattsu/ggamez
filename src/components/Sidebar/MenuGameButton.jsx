@@ -1,15 +1,50 @@
 import { useEffect, useState } from 'react';
 import { Flex, Link, Icon } from '@chakra-ui/react';
-import { GiAndroidMask, GiBroadsword, GiEarthAfricaEurope, GiCrosshair } from 'react-icons/gi';
+import {
+  GiFeatheredWing,
+  GiCrosshair,
+  GiFingerPrint,
+  GiHandBandage,
+  GiPerspectiveDiceOne,
+  GiRelicBlade,
+  GiRetroController,
+  GiSteeringWheel,
+  GiPuzzle,
+  GiJoystick,
+  GiLaddersPlatform,
+  GiRaceCar,
+  GiOrganigram,
+  GiAmericanFootballHelmet,
+  GiBoxingGlove,
+  GiFamilyHouse,
+  GiChessKnight,
+  GiSecretBook,
+  GiCardAceSpades,
+} from 'react-icons/gi';
 
-export const MenuGameButton = ({ icon, label, href }) => {
+export const MenuGameButton = ({ label, slug, href }) => {
   const [icons, setIcons] = useState({})
   useEffect(() => {
     setIcons({
-      GiAndroidMask,
-      GiBroadsword,
-      GiEarthAfricaEurope,
-      GiCrosshair
+      action: GiRelicBlade,
+      indie: GiFingerPrint,
+      adventure: GiFeatheredWing,
+      'role-playing-games-rpg': GiHandBandage,
+      strategy: GiPerspectiveDiceOne,
+      shooter: GiCrosshair,
+      casual: GiRetroController,
+      simulation: GiSteeringWheel,
+      puzzle: GiPuzzle,
+      arcade: GiJoystick,
+      platformer: GiLaddersPlatform,
+      racing: GiRaceCar,
+      'massively-multiplayer': GiOrganigram,
+      sports: GiAmericanFootballHelmet,
+      fighting: GiBoxingGlove,
+      family: GiFamilyHouse,
+      'board-games': GiChessKnight,
+      educational: GiSecretBook,
+      card: GiCardAceSpades,
     })
   }, []);
 
@@ -21,12 +56,11 @@ export const MenuGameButton = ({ icon, label, href }) => {
         color='gray.100'
         fontSize='md'
         w='full'
-        rounded='md'
+        rounded='2xl'
         p='1'
         transition='.1s'
         cursor='pointer'
         justify='center'
-        verticalAlign='middle'
       >
         <Flex
           direction='row'
@@ -35,12 +69,12 @@ export const MenuGameButton = ({ icon, label, href }) => {
           gap='2'
           w='full'
         >
-          <Icon as={icons[icon]}
+          <Icon as={icons[slug]}
             bg='gray.700'
             p='2'
-            h='full'
+            h='8'
             w='auto'
-            rounded='lg'
+            rounded='full'
           />
           { label }
         </Flex>
